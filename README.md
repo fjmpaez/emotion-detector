@@ -7,9 +7,9 @@ This project allows you to detect emotions from videos using machine learning mo
 The `export_training_data.py` script is used to extract facial landmarks from videos and save them as training data in a CSV file.
 
 Parameters:
---source: Path or URL of the input video.
---output: Name of the CSV file where the extracted data will be saved. If does not exist, it creates a new one. If file exists, the information is appended
---class_name: The class label associated with the data (e.g., happy, sad).
+- --source: Path or URL of the input video.
+- --output: Name of the CSV file where the extracted data will be saved. If does not exist, it creates a new one. If file exists, the information is appended
+- --class_name: The class label associated with the data (e.g., happy, sad).
 
 ### Command:
 ```bash
@@ -19,7 +19,7 @@ python src/export_training_data.py --source <video_path_or_url> --output <output
 Besides, the extract_data.sh script automates the process of extracting training data from multiple free video URLs from pexels.com for different emotion classes. It iterates over predefined classes and their associated video URLs, calling the export_training_data.py script for each video.
 
 Parameters:
-<output_file>: The path to the CSV file where the extracted data will be saved. If the file does not exist, it will be created. If it exists, new data will be appended.
+- <output_file>: The path to the CSV file where the extracted data will be saved. If the file does not exist, it will be created. If it exists, new data will be appended.
 
 ```bash
 bash extract_data.sh <output_file>
@@ -30,11 +30,11 @@ bash extract_data.sh <output_file>
 The create_model.py script is used to train a machine learning model using the data extracted from videos. The trained model is then saved to a file for later use in emotion detection.
 
 Parameters:
---data: Path to the CSV file containing the training data. This file should include the facial landmarks and their associated class labels.
---output: Path to the file where the trained model will be saved.
---model_type: The type of model to train. Options are:
-logistic_regression: A simple logistic regression model.
-random_forest: A more complex random forest model.
+- --data: Path to the CSV file containing the training data. This file should include the facial landmarks and their associated class labels.
+- --output: Path to the file where the trained model will be saved.
+- --model_type: The type of model to train. Options are:
+  - logistic_regression: A simple logistic regression model.
+  - random_forest: A more complex random forest model.
 
 ### Command:
 ```bash
@@ -45,9 +45,9 @@ python src/create_model.py --data <training_data.csv> --output <model_output.pkl
 The detect_emotions.py script is used to detect emotions in a video using a pre-trained machine learning model. The script processes the video frame by frame and outputs a new video with the detected emotions.
 
 Parameters:
---source: Path or URL of the input video to process.
---output: Path to the file where the output video with detected emotions will be saved.
---model: Path to the pre-trained model file (e.g., .pkl) that will be used for emotion detection.
+- --source: Path or URL of the input video to process.
+- --output: Path to the file where the output video with detected emotions will be saved.
+- --model: Path to the pre-trained model file (e.g., .pkl) that will be used for emotion detection.
 
 ### Command:
 ```bash
